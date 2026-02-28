@@ -4,10 +4,10 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://www.codextreme.es",
+  site: "https://www.rustilian.com",
   i18n: {
     defaultLocale: "en",
-    locales: ["es", "en"],
+    locales: ["pt-br", "en"],
     routing: {
       prefixDefaultLocale: false,
     },
@@ -21,7 +21,7 @@ export default defineConfig({
         defaultLocale: "en",
         locales: {
           en: "en",
-          es: "es",
+          "pt-br": "pt-BR",
         },
       },
     }),

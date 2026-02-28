@@ -8,7 +8,7 @@ const t = useTranslations(currentLang as keyof typeof languageList);
 
 <div
   id="cookie-banner"
-  class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[95%] max-w-3xl bg-white dark:bg-[#1A1A1A] rounded-lg border border-gray-200 dark:border-white/10 shadow-xl z-[60] transform translate-y-[150%] transition-transform duration-500"
+  class="fixed bottom-4 left-1/2 -translate-x-1/2 w-[95%] max-w-3xl bg-white dark:bg-[#200800] rounded-lg border border-gray-200 dark:border-red-900/30 shadow-xl z-[60] transform translate-y-[150%] transition-transform duration-500"
 >
   <div class="p-4">
     <div class="flex flex-col md:flex-row items-center gap-4">
@@ -23,7 +23,7 @@ const t = useTranslations(currentLang as keyof typeof languageList);
           {t("cookies.message")}
           <a
             href="#"
-            class="text-[#2563EB] hover:underline font-bold ml-1 whitespace-nowrap"
+            class="text-orange-500 hover:underline font-bold ml-1 whitespace-nowrap"
             >{t("cookies.more_info")}</a
           >
         </div>
@@ -35,7 +35,7 @@ const t = useTranslations(currentLang as keyof typeof languageList);
       >
         <button
           id="accept-cookies"
-          class="px-4 py-1.5 bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-bold rounded-md transition-colors text-xs flex-1 md:flex-none text-center shadow-sm"
+          class="px-4 py-1.5 bg-red-700 hover:bg-red-600 text-white font-bold rounded-md transition-colors text-xs flex-1 md:flex-none text-center shadow-sm"
         >
           {t("cookies.accept_all")}
         </button>
@@ -62,7 +62,7 @@ const t = useTranslations(currentLang as keyof typeof languageList);
   const rejectBtn = document.getElementById("reject-cookies");
   const customizeBtn = document.getElementById("customize-cookies");
 
-  const COOKIE_CONSENT_KEY = "codextreme_cookie_consent";
+  const COOKIE_CONSENT_KEY = "rustilian_cookie_consent";
 
   // Check if consent is already given
   const checkConsent = () => {

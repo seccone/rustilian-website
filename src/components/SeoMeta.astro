@@ -10,38 +10,38 @@ const { title, description, canonical, noindex = false } = Astro.props;
 const currentLang = Astro.currentLocale || "en";
 const currentUrl = new URL(Astro.request.url);
 
-// Construir URL canónica correcta
+// Construir URL canônica correta
 let canonicalUrl: string;
 if (canonical) {
   canonicalUrl = canonical;
 } else {
   let pathname = currentUrl.pathname;
 
-  // Si es español, quitar el prefijo /es para construir la versión base
-  if (currentLang === "es" && pathname.startsWith("/es")) {
-    pathname = pathname.substring(3) || "/";
+  // Se é Português, retirar o prefixo /pt-br para construir a versão base
+  if (currentLang === "pt-br" && pathname.startsWith("/pt-br")) {
+    pathname = pathname.substring(6) || "/";
   }
 
-  // Construir la URL canónica según el idioma actual
+  // Construir a URL canônica de acordo com o idioma atual
   if (currentLang === "en") {
-    canonicalUrl = `https://www.codextreme.es${pathname}`;
+    canonicalUrl = `https://www.rustilian.es${pathname}`;
   } else {
-    canonicalUrl = `https://www.codextreme.es/es${pathname}`;
+    canonicalUrl = `https://www.rustilian.es/pt-br${pathname}`;
   }
 }
 
-// Funciones para generar URLs alternativas
+// Funções para gerar URLs alternativas
 const getEnglishUrl = () => {
-  if (currentLang === "es") {
-    return canonicalUrl.replace("/es", "") || "https://www.codextreme.es/";
+  if (currentLang === "pt-br") {
+    return canonicalUrl.replace("/pt-br", "") || "https://www.rustilian.es/";
   }
   return canonicalUrl;
 };
 
-const getSpanishUrl = () => {
+const getPortugueseUrl = () => {
   if (currentLang === "en") {
     const pathname = new URL(canonicalUrl).pathname;
-    return `https://www.codextreme.es/es${pathname}`;
+    return `https://www.rustilian.es/pt-br${pathname}`;
   }
   return canonicalUrl;
 };
@@ -51,14 +51,16 @@ const getSpanishUrl = () => {
 <link rel="canonical" href={canonicalUrl} />
 
 <!-- Robots meta tag -->
-{noindex ? (
-  <meta name="robots" content="noindex, nofollow" />
-) : (
-  <meta name="robots" content="index, follow" />
-)}
+{
+  noindex ? (
+    <meta name="robots" content="noindex, nofollow" />
+  ) : (
+    <meta name="robots" content="index, follow" />
+  )
+}
 
 <!-- Hreflang para idiomas -->
-<link rel="alternate" hreflang="es" href={getSpanishUrl()} />
+<link rel="alternate" hreflang="pt-br" href={getPortugueseUrl()} />
 <link rel="alternate" hreflang="en" href={getEnglishUrl()} />
 <link rel="alternate" hreflang="x-default" href={getEnglishUrl()} />
 

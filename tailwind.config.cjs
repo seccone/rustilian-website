@@ -30,11 +30,11 @@ module.exports = {
         },
       },
       colors: {
-        primary: '#FF6F61',
-        secondary: '#6B5B95',
-        darkbg: '#1A1A1A',
+        primary: '#b91c1c',    // red-700 — Rustilian brand red
+        accent: '#f97316',     // orange-500 — Rustilian brand orange
+        darkbg: '#200800',     // Rustilian dark background
         lightbg: '#F4F4F4',
-        slate: colors.slate, // Importa la escala completa
+        slate: colors.slate,
       },
       boxShadow: {
         'xl-dark': '0 20px 25px -5px rgba(255, 255, 255, 0.1), 0 8px 10px -6px rgba(255, 255, 255, 0.1)',
