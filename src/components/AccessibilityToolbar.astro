@@ -1,0 +1,438 @@
+---
+import { useTranslations } from "@/i18n/utils";
+import { languageList } from "@/i18n/ui";
+
+const currentLang = Astro.currentLocale || "en";
+const t = useTranslations(currentLang as keyof typeof languageList);
+---
+
+<div
+  id="accessibility-toolbar"
+  class="fixed left-4 top-1/2 -translate-y-1/2 z-50"
+>
+  <!-- Toggle Button -->
+  <button
+    id="accessibility-toggle"
+    class="w-12 h-12 rounded-full bg-[#2563EB] hover:bg-[#1D4ED8] text-white shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#2563EB] focus:ring-offset-2 dark:focus:ring-offset-[#141414]"
+    aria-label={t("accessibility.title")}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"
+      ></path>
+    </svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6 absolute opacity-0"
+      viewBox="0 0 20 20"
+      fill="currentColor"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+        clip-rule="evenodd"></path>
+    </svg>
+    <span class="sr-only">{t("accessibility.title")}</span>
+    <!-- Icono de persona accesible -->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-7 w-7"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path
+        d="M12 2C13.1046 2 14 2.89543 14 4C14 5.10457 13.1046 6 12 6C10.8954 6 10 5.10457 10 4C10 2.89543 10.8954 2 12 2ZM10 22C10 22.5523 9.55228 23 9 23C8.44772 23 8 22.5523 8 22V13H6V16C6 16.5523 5.55228 17 5 17C4.44772 17 4 16.5523 4 16V11C4 9.34315 5.34315 8 7 8H17C18.6569 8 20 9.34315 20 11V16C20 16.5523 19.5523 17 19 17C18.4477 17 18 16.5523 18 16V13H16V22C16 22.5523 15.5523 23 15 23C14.4477 23 14 22.5523 14 22V16H10V22Z"
+      ></path>
+    </svg>
+  </button>
+
+  <!-- Menu -->
+  <div
+    id="accessibility-menu"
+    class="absolute left-16 top-0 -translate-y-1/2 w-72 bg-white dark:bg-[#1A1A1A] rounded-xl shadow-2xl border border-gray-200 dark:border-white/10 transform scale-0 origin-left transition-transform duration-300 overflow-hidden"
+  >
+    <!-- Header -->
+    <div class="bg-[#2563EB] p-4 flex justify-between items-center text-white">
+      <div class="flex items-center gap-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path
+            d="M12 2C13.1046 2 14 2.89543 14 4C14 5.10457 13.1046 6 12 6C10.8954 6 10 5.10457 10 4C10 2.89543 10.8954 2 12 2ZM10 22C10 22.5523 9.55228 23 9 23C8.44772 23 8 22.5523 8 22V13H6V16C6 16.5523 5.55228 17 5 17C4.44772 17 4 16.5523 4 16V11C4 9.34315 5.34315 8 7 8H17C18.6569 8 20 9.34315 20 11V16C20 16.5523 19.5523 17 19 17C18.4477 17 18 16.5523 18 16V13H16V22C16 22.5523 15.5523 23 15 23C14.4477 23 14 22.5523 14 22V16H10V22Z"
+          ></path>
+        </svg>
+        <h3 class="font-bold text-sm uppercase tracking-wider">
+          {t("accessibility.title")}
+        </h3>
+      </div>
+      <button
+        id="close-accessibility"
+        class="text-white/80 hover:text-white transition-colors"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Options -->
+    <div class="p-2 space-y-1 max-h-[60vh] overflow-y-auto">
+      <button
+        id="acc-increase-text"
+        class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-gray-200 transition-colors text-left"
+      >
+        <span class="text-xl font-bold">A+</span>
+        <span class="text-sm font-medium"
+          >{t("accessibility.increase_text")}</span
+        >
+      </button>
+
+      <button
+        id="acc-decrease-text"
+        class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-gray-200 transition-colors text-left"
+      >
+        <span class="text-sm font-bold">A-</span>
+        <span class="text-sm font-medium"
+          >{t("accessibility.decrease_text")}</span
+        >
+      </button>
+
+      <button
+        id="acc-grayscale"
+        class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-gray-200 transition-colors text-left"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+          ></path>
+        </svg>
+        <span class="text-sm font-medium">{t("accessibility.grayscale")}</span>
+      </button>
+
+      <button
+        id="acc-high-contrast"
+        class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-gray-200 transition-colors text-left"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+          ></path>
+        </svg>
+        <span class="text-sm font-medium"
+          >{t("accessibility.high_contrast")}</span
+        >
+      </button>
+
+      <button
+        id="acc-negative-contrast"
+        class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-gray-200 transition-colors text-left"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          ></path>
+        </svg>
+        <span class="text-sm font-medium"
+          >{t("accessibility.negative_contrast")}</span
+        >
+      </button>
+
+      <button
+        id="acc-underline-links"
+        class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-gray-200 transition-colors text-left"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+          ></path>
+        </svg>
+        <span class="text-sm font-medium"
+          >{t("accessibility.underline_links")}</span
+        >
+      </button>
+
+      <button
+        id="acc-readable-font"
+        class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-gray-200 transition-colors text-left"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+          ></path>
+        </svg>
+        <span class="text-sm font-medium"
+          >{t("accessibility.readable_font")}</span
+        >
+      </button>
+
+      <button
+        id="acc-reset"
+        class="w-full flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-white/5 text-gray-700 dark:text-gray-200 transition-colors text-left"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+          ></path>
+        </svg>
+        <span class="text-sm font-medium">{t("accessibility.reset")}</span>
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <div
+      class="bg-gray-50 dark:bg-white/5 p-3 text-center border-t border-gray-200 dark:border-white/10"
+    >
+      <p class="text-xs text-gray-500 dark:text-gray-400">
+        {t("accessibility.current_size")}: <span id="acc-size-label">100%</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById("accessibility-toggle");
+  const closeBtn = document.getElementById("close-accessibility");
+  const menu = document.getElementById("accessibility-menu");
+  const sizeLabel = document.getElementById("acc-size-label");
+
+  let isOpen = false;
+  let fontSize = 100;
+  let isGrayscale = false;
+  let isHighContrast = false;
+  let isNegativeContrast = false;
+  let isUnderlineLinks = false;
+  let isReadableFont = false;
+
+  const toggleMenu = () => {
+    isOpen = !isOpen;
+    if (isOpen) {
+      menu?.classList.remove("scale-0");
+      menu?.classList.add("scale-100");
+    } else {
+      menu?.classList.remove("scale-100");
+      menu?.classList.add("scale-0");
+    }
+  };
+
+  toggleBtn?.addEventListener("click", toggleMenu);
+  closeBtn?.addEventListener("click", toggleMenu);
+
+  // Click outside to close
+  document.addEventListener("click", (e) => {
+    if (
+      isOpen &&
+      !menu?.contains(e.target as Node) &&
+      !toggleBtn?.contains(e.target as Node)
+    ) {
+      toggleMenu();
+    }
+  });
+
+  // Functions
+  const updateSize = () => {
+    document.documentElement.style.fontSize = `${fontSize}%`;
+    if (sizeLabel) sizeLabel.textContent = `${fontSize}%`;
+  };
+
+  document
+    .getElementById("acc-increase-text")
+    ?.addEventListener("click", () => {
+      if (fontSize < 200) {
+        fontSize += 10;
+        updateSize();
+      }
+    });
+
+  document
+    .getElementById("acc-decrease-text")
+    ?.addEventListener("click", () => {
+      if (fontSize > 70) {
+        fontSize -= 10;
+        updateSize();
+      }
+    });
+
+  document.getElementById("acc-grayscale")?.addEventListener("click", () => {
+    isGrayscale = !isGrayscale;
+    document.documentElement.classList.toggle("acc-grayscale", isGrayscale);
+  });
+
+  document
+    .getElementById("acc-high-contrast")
+    ?.addEventListener("click", () => {
+      isHighContrast = !isHighContrast;
+      document.documentElement.classList.toggle(
+        "acc-high-contrast",
+        isHighContrast
+      );
+      // Disable negative contrast if active
+      if (isHighContrast && isNegativeContrast) {
+        isNegativeContrast = false;
+        document.documentElement.classList.remove("acc-negative-contrast");
+      }
+    });
+
+  document
+    .getElementById("acc-negative-contrast")
+    ?.addEventListener("click", () => {
+      isNegativeContrast = !isNegativeContrast;
+      document.documentElement.classList.toggle(
+        "acc-negative-contrast",
+        isNegativeContrast
+      );
+      // Disable high contrast if active
+      if (isNegativeContrast && isHighContrast) {
+        isHighContrast = false;
+        document.documentElement.classList.remove("acc-high-contrast");
+      }
+    });
+
+  document
+    .getElementById("acc-underline-links")
+    ?.addEventListener("click", () => {
+      isUnderlineLinks = !isUnderlineLinks;
+      document.documentElement.classList.toggle(
+        "acc-underline-links",
+        isUnderlineLinks
+      );
+    });
+
+  document
+    .getElementById("acc-readable-font")
+    ?.addEventListener("click", () => {
+      isReadableFont = !isReadableFont;
+      document.documentElement.classList.toggle(
+        "acc-readable-font",
+        isReadableFont
+      );
+    });
+
+  document.getElementById("acc-reset")?.addEventListener("click", () => {
+    fontSize = 100;
+    isGrayscale = false;
+    isHighContrast = false;
+    isNegativeContrast = false;
+    isUnderlineLinks = false;
+    isReadableFont = false;
+
+    updateSize();
+    document.documentElement.classList.remove(
+      "acc-grayscale",
+      "acc-high-contrast",
+      "acc-negative-contrast",
+      "acc-underline-links",
+      "acc-readable-font"
+    );
+  });
+</script>
+
+<style is:global>
+  .acc-grayscale {
+    filter: grayscale(100%) !important;
+  }
+
+  .acc-high-contrast {
+    filter: contrast(150%) !important;
+  }
+
+  .acc-negative-contrast {
+    filter: invert(100%) !important;
+  }
+
+  .acc-underline-links a {
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
+  }
+
+  .acc-readable-font {
+    font-family: "Arial", "Helvetica", sans-serif !important;
+  }
+
+  .acc-readable-font * {
+    font-family: "Arial", "Helvetica", sans-serif !important;
+  }
+</style>

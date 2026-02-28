@@ -1,0 +1,25 @@
+---
+import ToolCard from "@/components/TarjetaTools.astro";
+
+const { title, tools, borderColor } = Astro.props;
+---
+
+<div class="category-section h-full">
+  <div class="mb-6 flex items-center gap-3">
+    <div
+      class={`w-1 h-8 rounded-full bg-gradient-to-b ${borderColor.replace("text-", "from-").replace("500", "400")} to-transparent`}
+    >
+    </div>
+    <h2 class={`text-2xl font-bold ${borderColor} tracking-tight`}>
+      {title}
+    </h2>
+  </div>
+
+  <div class="space-y-4">
+    {
+      tools.map((tool: { id: string; name: string; description: string }) => (
+        <ToolCard {...tool} />
+      ))
+    }
+  </div>
+</div>
