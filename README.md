@@ -14,7 +14,8 @@ Current featured projects:
 
 - **ORCA Options** — ultra-low latency options trading engine (available)
 - **ORCA Stocks** — equity market extension of the ORCA suite (in development)
-- **QLTSYS** — backend system for pool maintenance management (available)
+- **QLTSYS** — backend system for pool maintenance and management (available)
+- **WWTS** — backend system for Wastewater Treatment System maintenance and management (in development)
 
 The site is intentionally minimal: no bloat, no dead pages — just a fast, accessible, branded landing that clearly communicates what Rustilian builds and why it matters.
 
@@ -44,7 +45,7 @@ Hot reload, TypeScript throughout, and pnpm for fast installs
 ## Tech Stack
 
 | Layer           | Technology                                 |
-|-----------------|--------------------------------------------|
+| --------------- | ------------------------------------------ |
 | Framework       | [Astro](https://astro.build) v5            |
 | UI components   | [React](https://react.dev) v19             |
 | Styling         | [Tailwind CSS](https://tailwindcss.com) v3 |

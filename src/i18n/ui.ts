@@ -73,6 +73,10 @@ export const labels = {
     "home.qltsys.description":
       "Uma aplicação backend robusta para gestão de manutenção de piscinas — agendamento, despacho de técnicos, controle de químicos e relatórios para clientes, tudo em um só sistema.",
     "home.qltsys.status": "Disponível",
+    "home.wwts.name": "WWTS",
+    "home.wwts.description":
+      "Um sistema backend completo para manutenção e gestão de Estações de Tratamento de Águas Residuais — monitoramento em tempo real, agendamento de manutenção, controle de qualidade e relatórios de conformidade regulatória.",
+    "home.wwts.status": "Em Desenvolvimento",
 
     // =========== Privacidade =========== //
     "privacy.title": "Política de Privacidade",
@@ -192,6 +196,10 @@ export const labels = {
     "home.qltsys.description":
       "A robust backend application for pool maintenance management — scheduling, technician dispatch, chemical tracking, and client reporting all in one system.",
     "home.qltsys.status": "Ready",
+    "home.wwts.name": "WWTS",
+    "home.wwts.description":
+      "A comprehensive backend system for Wastewater Treatment System maintenance and management — real-time monitoring, maintenance scheduling, water quality control, and regulatory compliance reporting.",
+    "home.wwts.status": "In Development",
 
     // =========== Privacy =========== //
     "privacy.title": "Privacy Policy",
